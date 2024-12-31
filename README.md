@@ -1,61 +1,98 @@
-# End to end Text-Summarizer-Project
+# End-to-End Text Summarizer
 
-## Workflows
+This repository contains an end-to-end text summarization project, leveraging state-of-the-art NLP techniques to summarize long-form text efficiently. The project is modular, scalable, and designed for seamless deployment.
 
-1. Update config.yaml
-2. Update params.yaml
-3. Update entity
-4. Update the configuration manager in src config
-5. update the conponents
-6. update the pipeline
-7. update the main.py
-8. update the app.py
+## Table of Contents
+- [Features](#features)
+- [Folder Structure](#folder-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Docker Support](#docker-support)
+- [AWS CICD Deployment with GitHub Actions](#aws-cicd-deployment-with-github-actions)
+- [License](#license)
 
+## Features
+- **Customizable text summarization**: Supports various text lengths and summarization parameters.
+- **End-to-end pipeline**: From preprocessing to generating summaries.
+- **Dockerized Deployment**: Easy deployment using Docker.
+- **Configurable Parameters**: Flexible settings via a YAML configuration file.
+- **Modular Codebase**: Easily extendable for further development.
 
-# How to run?
-### STEPS:
-
-Clone the repository
-
-```bash
-https://github.com/entbappy/End-to-end-Text-Summarization
+## Folder Structure
 ```
-### STEP 01- Create a conda environment after opening the repository
-
-```bash
-conda create -n summary python=3.8 -y
+.
+├── .github/workflows  # GitHub workflows for CI/CD
+├── config             # Configuration files
+├── research           # Research and exploration notebooks
+├── src/textSummarizer # Core modules for text summarization
+├── .gitignore         # Git ignore rules
+├── Dockerfile         # Dockerfile for containerization
+├── LICENSE            # License file
+├── README.md          # Project documentation
+├── app.py             # Application entry point
+├── main.py            # Main pipeline script
+├── params.yaml        # Parameter configuration file
+├── requirements.txt   # Python dependencies
+├── setup.py           # Setup script for packaging
+├── template.py        # Template script for new modules
 ```
 
+## Installation
+### Prerequisites
+- Python 3.8+
+- pip
+- Docker (optional)
+
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/FAbdullah17/End-to-End-Text-Summarizer.git
+   cd End-to-End-Text-Summarizer
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. (Optional) Install the package:
+   ```bash
+   python setup.py install
+   ```
+
+## Usage
+### Running the Application
+Run the pipeline using the following command:
 ```bash
-conda activate summary
+python main.py
 ```
 
-
-### STEP 02- install the requirements
+### Using the Web App
+Start the application:
 ```bash
-pip install -r requirements.txt
-```
-
-
-```bash
-# Finally run the following command
 python app.py
 ```
+Access the app at `http://127.0.0.1:5000` in your web browser.
 
-Now,
-```bash
-open up you local host and port
+## Configuration
+Update the `params.yaml` file to configure the model and other settings:
+```yaml
+text_length: 1000
+summary_length: 150
+model_name: bert-based-summarizer
 ```
 
-
+## Docker Support
+### Build the Docker Image
 ```bash
-Author: Krish Naik
-Data Scientist
-Email: krishnaik06@gmail.com
-
+docker build -t text-summarizer .
 ```
 
-
+### Run the Docker Container
+```bash
+docker run -p 5000:5000 text-summarizer
+```
 
 # AWS-CICD-Deployment-with-Github-Actions
 
@@ -129,3 +166,8 @@ Email: krishnaik06@gmail.com
     AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
 
     ECR_REPOSITORY_NAME = simple-app
+
+ 
+ ## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
